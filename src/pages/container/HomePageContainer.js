@@ -8,30 +8,30 @@ export default function HomePageContainer() {
   const [text, setText] = useState('');
 
   const dataAddFunc = () => {
-    var obj = {
-      id: data[data.length - 1].id + 1,
+    let obj = {
+      id: data.length + 1,
       title: text,
       done: false,
     };
 
-    var tempArray = [...data, obj];
+    let tempArray = [...data, obj];
     setData(tempArray);
     setText('');
   };
 
   const deleteFunc = item => {
-    var tempList = data.filter(x => x.id !== item.id);
+    let tempList = data.filter(x => x.id !== item.id);
     setData(tempList);
   };
 
   function checkFunc(item) {
-    var obj = {
+    let obj = {
       id: item.id,
       title: item.title,
       done: !item.done,
     };
 
-    var tempList = [];
+    let tempList = [];
 
     data.map(x => {
       if (x.id === item.id) {
@@ -42,8 +42,6 @@ export default function HomePageContainer() {
     });
 
     setData(tempList);
-
-    console.log(tempList);
   }
 
   const editFunc = item => {

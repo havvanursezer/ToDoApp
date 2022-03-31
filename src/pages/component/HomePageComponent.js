@@ -38,7 +38,7 @@ export default function HomePageComponent({
                   <TouchableOpacity onPress={() => checkFunc(item)}>
                     <Image
                       style={styles.checkIcon}
-                      source={item.done === true ?require( '../../assets/checked.png') : require('../../assets/unchecked.png')}
+                      source={item.done === true ? require( '../../assets/checked.png') : require('../../assets/unchecked.png')}
                     />
                   </TouchableOpacity>
                   <View>

@@ -12,8 +12,7 @@ export default function LoginPageContainer() {
 
   function onLogin() {
     if (
-      userList.filter(x => x.username === username && x.password === password)
-        .length > 0
+      userList.filter(x => x.username === username && x.password === password).length > 0
     ) {
       Actions.homePage();
     } else {
@@ -21,21 +20,13 @@ export default function LoginPageContainer() {
     }
   }
 
-  const onPressFunc = params => {
-    setVisibility(params);
-  };
-
-  const onPressIcon = params => {
-    setIcon(params);
-  };
-
   function visibilityFunc() {
     if (visibility === true) {
-      onPressFunc(false);
-      onPressIcon(require('../../assets/unvisible.png'));
+      setVisibility(false);
+      setIcon(require('../../assets/unvisible.png'));
     } else {
-      onPressFunc(true);
-      onPressIcon(require('../../assets/visible.png'));
+      setVisibility(true);
+      setIcon(require('../../assets/visible.png'));
     }
   }
 

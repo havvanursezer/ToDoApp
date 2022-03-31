@@ -6,48 +6,46 @@ export default function EditPageContainer(props) {
   const [date, setDate] = useState(new Date(props.item.date));
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(props.item.title);
-  const [errorText, setErrorText] = useState('');
-
+  const [alertText, setAlertText] = useState('');
+  const {item, data} = props;
   const setDataFunc = () => {
     if (title !== '') {
-      var obj = {
-        id: props.item.id,
-        title: title,
-        done: props.item.done,
-        date: date,
-      };
+     
+     let tempList = [];
 
-      var tempList = [];
-
-      props.data.map(x => {
-        if (x.id === props.item.id) {
-          tempList.push(obj);
+      data.map(x => {
+        if (x.id === item.id) {
+          tempList.push({
+            id: item.id,
+            title: title,
+            done: item.done,
+            date: date,
+          });
         } else {
           tempList.push(x);
         }
       });
 
       props.setData(tempList);
-      console.log(tempList);
-      setErrorText('Kayıt başarıyla gerçekleşti.');
+      setAlertText('Kayıt başarıyla gerçekleşti.');
 
     } else {
-      setErrorText('Konu alanı boş bırakılamaz.');
+      setAlertText('Konu alanı boş bırakılamaz.');
     }
   };
 
   const closeFunc = () =>{
-      if(errorText == 'Kayıt başarıyla gerçekleşti.'){
-          setErrorText("");
+      if(alertText == 'Kayıt başarıyla gerçekleşti.'){
+          setAlertText("");
         Actions.pop();
       }else{
-          setErrorText("");
+          setAlertText("");
       }
   }
 
   return (
     <EditPageComponent
-      item={props.item}
+      item={item}
       date={date}
       setDate={setDate}
       title={title}
@@ -55,7 +53,7 @@ export default function EditPageContainer(props) {
       open={open}
       setOpen={setOpen}
       setDataFunc={setDataFunc}
-      errorText={errorText}
+      alertText={alertText}
       closeFunc={closeFunc}
     />
   );

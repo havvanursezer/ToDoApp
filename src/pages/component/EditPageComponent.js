@@ -13,7 +13,7 @@ export default function EditPageComponent({
   open,
   setOpen,
   setDataFunc,
-  errorText,
+  alertText,
   closeFunc
 }) {
   return (
@@ -86,7 +86,7 @@ export default function EditPageComponent({
         </TouchableOpacity>
       </View>
       <ModalNotification 
-        text={errorText}
+        text={alertText}
         closeFunc={closeFunc}
       />
     </View>
